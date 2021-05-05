@@ -8,9 +8,7 @@ import android.widget.Toast;
 
 import com.example.mycounter.databinding.ActivityMainBinding;
 
-/**
- *
- */
+
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding b;
