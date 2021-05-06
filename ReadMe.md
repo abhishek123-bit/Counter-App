@@ -2,7 +2,11 @@
 
 I have made an Counter application
 
+## Features in the application
 
+- Increase the quantity
+- Decrease the quantity
+- Show Toast Message 
 
 ## Previews of the application
 
