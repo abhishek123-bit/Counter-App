@@ -13,7 +13,8 @@ I have made an Counter application
 <img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/01.png?raw=true" alt="" width="231">
 <img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/02.png?raw=true" alt="" width="231">
 <img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/03.png?raw=true" alt="" width="231">
-<img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/04.png?raw=true" alt="" width="231">
+<img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/04.png?raw=true" alt="" height="231">
+<img title="" src="https://github.com/abhishek123-bit/CDN/blob/main/MyCounter/05.png?raw=true" alt="" width="231">
 
 ## Download the apk
 
