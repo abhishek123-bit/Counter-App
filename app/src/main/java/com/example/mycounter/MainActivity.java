@@ -1,7 +1,9 @@
 package com.example.mycounter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -9,20 +11,40 @@ import android.widget.Toast;
 import com.example.mycounter.databinding.ActivityMainBinding;
 
 
-
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding b;
-    int qty=0;
+    int qty = 0;
+
+    private String COUNT_VALUE = "countValue";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Initializing the binding
-        b=ActivityMainBinding.inflate(getLayoutInflater());
+        b = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(b.getRoot());
 
         //Handel click events
         eventHandler();
+
+        handelConfigurationChanges(savedInstanceState);
+    }
+
+    /**
+     * Handle data on configuration change
+     * @param savedInstanceState To get data from bundle
+     */
+    private void handelConfigurationChanges(Bundle savedInstanceState) {
+        //Check savedInstanceState not null
+        if (savedInstanceState != null) {
+            qty = savedInstanceState.getInt(COUNT_VALUE);
+        } else {
+            //Get data from sharedPreference
+            qty = getPreferences(MODE_PRIVATE)
+                    .getInt(COUNT_VALUE, 0);
+
+        }
+        b.qty.setText(qty + "");
     }
 
     /**
@@ -54,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void increaseQuantity() {
         //update quantity and textView
-        b.qty.setText(++qty+"");
+        b.qty.setText(++qty + "");
     }
 
     /**
@@ -64,16 +86,25 @@ public class MainActivity extends AppCompatActivity {
     private void decreaseQuantity() {
 
         //check quantity
-        if(qty==0){
+        if (qty == 0) {
             //show toast message
             Toast.makeText(this, "Quantity is already 0", Toast.LENGTH_SHORT).show();
             return;
         }
 
         //update quantity and textView
-        b.qty.setText(--qty+"");
+        b.qty.setText(--qty + "");
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(COUNT_VALUE, qty);
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getPreferences(MODE_PRIVATE).edit().putInt(COUNT_VALUE, qty).apply();
+    }
 }
